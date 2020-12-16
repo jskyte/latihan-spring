@@ -7,8 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "detail_biodata_entity")
 public class DetailBiodataEntity {
@@ -37,7 +42,7 @@ public class DetailBiodataEntity {
 	}
 
 	public DetailBiodataEntity(Integer id, String domisili, Integer usia, Date tanggalLahir, String hobi,
-			String jenisKelamin) {
+			String jenisKelamin, PersonEntity personEntity) {
 		super();
 		this.id = id;
 		this.domisili = domisili;
@@ -45,6 +50,7 @@ public class DetailBiodataEntity {
 		this.tanggalLahir = tanggalLahir;
 		this.hobi = hobi;
 		this.jenisKelamin = jenisKelamin;
+		this.personEntity = personEntity;
 	}
 
 	public Integer getId() {
@@ -95,6 +101,8 @@ public class DetailBiodataEntity {
 		this.jenisKelamin = jenisKelamin;
 	}
 	
-	
+	@OneToOne
+	@JoinColumn(name = "person_id")
+	private PersonEntity personEntity;
 	
 }
