@@ -35,11 +35,16 @@ public class PendidikanController {
 		return ResponseEntity.ok(pendidikanEntities);
 	}
 	
+	@GetMapping("/get-pendidikan-by-id/{id}")
+	public ResponseEntity<?> getPendidikanById(@PathVariable Integer id){
+		List<PendidikanEntity> pendidikanEntities = pendidikanRepository.findPendidikanById(id);
+		return ResponseEntity.ok(pendidikanEntities);
+	}
+	
 	@PostMapping("/add-pendidikan")
 	public ResponseEntity<?> addPendidikan(@RequestBody PendidikanDto dto){
 		PendidikanEntity pendidikanEntity = convertToPendidikanEntity(dto);
 		PersonEntity personEntity = personRepository.findById(dto.getIdPerson()).get();
-		personEntity.setId(personRepository.findIdById(dto.getIdPerson()));
 		pendidikanEntity.setPersonEntity(personEntity);
 		pendidikanRepository.save(pendidikanEntity);
 		return ResponseEntity.ok(pendidikanEntity);

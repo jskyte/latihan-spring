@@ -1,8 +1,12 @@
 package com.myproject.demoSpring.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PendidikanDto {
 	private Integer id;
 	private String level;
@@ -11,19 +15,5 @@ public class PendidikanDto {
 	private Integer tahunLulus;
 	private Integer idPerson;
 	
-	public PendidikanDto() {
-		super();
-	}
-
-	public PendidikanDto(Integer id, String level, String institusi, Integer tahunMasuk, Integer tahunLulus,
-			Integer idPerson) {
-		super();
-		this.id = id;
-		this.level = level;
-		this.institusi = institusi;
-		this.tahunMasuk = tahunMasuk;
-		this.tahunLulus = tahunLulus;
-		this.idPerson = idPerson;
-	}
 		
 }
