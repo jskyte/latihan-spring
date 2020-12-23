@@ -35,7 +35,7 @@ public class PendidikanController {
 		return ResponseEntity.ok(pendidikanEntities);
 	}
 	
-	@GetMapping("/get-pendidikan-by-id/{id}")
+	@GetMapping("/get-riwayat/{id}")
 	public ResponseEntity<?> getPendidikanById(@PathVariable Integer id){
 		List<PendidikanEntity> pendidikanEntities = pendidikanRepository.findPendidikanById(id);
 		return ResponseEntity.ok(pendidikanEntities);

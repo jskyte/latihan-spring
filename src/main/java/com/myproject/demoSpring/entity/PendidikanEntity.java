@@ -36,6 +36,11 @@ public class PendidikanEntity {
 	@ManyToOne
 	@JoinColumn(name="person_id")
 	private PersonEntity personEntity;
+	
+	// Join ke tabel lain menggunakan index
+//	@ManyToOne
+//	@JoinColumn(name="kode_person", referencedColumnName = "kode_person")
+//	private String kodePerson;
 
 	public PendidikanEntity() {
 		super();

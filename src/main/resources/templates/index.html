@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Tutorial Spring MVC - Thymeleaf</title>
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="/webjars/font-awesome/5.15.1/css/all.min.css">
+<link th:ref="@{/css/mystyle.css}">
+</head>
+<body>
+	
+	<div layout:replace="~{/fragments/header}"></div>
+	
+	<div class="container">
+		<table class="table" id="table-person">
+		  <thead>
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">First Name</th>
+		      <th scope="col">Last Name</th>
+		      <th scope="col">NIK</th>
+			  <th scope="col">Kode Person</th>
+		    </tr>
+		  </thead>
+		  <tbody id="body-person">
+		  
+		  </tbody>
+		</table>
+	</div>
+	
+	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+	<script th:src="@{/js/myscript.js}"></script>
+	
+	<script>
+		$.ajax({
+			url:'/person/get-all',
+			method:'get',
+			contentType:'application/json',
+			success:function(res, status, xhr) {
+				data = "";
+				$.each(res, function(i, v){
+					data += "<tr>";
+					data += "<td>" + v.id + "</td>";
+					data += "<td>" + v.firstName + "</td>";
+					data += "<td>" + v.lastName + "</td>";
+					data += "<td>" + v.nik + "</td>";
+					data += "<td>" + v.kodePerson + "</td>";
+					data += "</tr>";
+				});
+				$('#body-person').append(data);
+				console.log(res)
+			}
+		})
+	</script>
+</body>
+</html>

@@ -6,7 +6,25 @@ public class PersonDto {
 	private String lastName;
 	private String message;
 	private String status;
+	private String nik;
+	private String kodePerson;
 	
+	public String getNik() {
+		return nik;
+	}
+
+	public void setNik(String nik) {
+		this.nik = nik;
+	}
+
+	public String getKodePerson() {
+		return kodePerson;
+	}
+
+	public void setKodePerson(String kodePerson) {
+		this.kodePerson = kodePerson;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -27,13 +45,17 @@ public class PersonDto {
 		super();
 	}
 
-	public PersonDto(Integer id, String firstName, String lastName, String message, String status) {
+
+	public PersonDto(Integer id, String firstName, String lastName, String message, String status, String nik,
+			String kodePerson) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.message = message;
 		this.status = status;
+		this.nik = nik;
+		this.kodePerson = kodePerson;
 	}
 
 	public Integer getId() {
